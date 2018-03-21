@@ -35,6 +35,7 @@ for(i in 1:nrow(yr1)){
 
 new_year1 <- new_year1[2:nrow(new_year1),]
 new_year1$Framing <- relevel(as.factor(new_year1$Framing), ref="Neutral")
+new_year1$Context <- relevel(as.factor(new_year1$Context), ref="Snow")
 
 
 #Year 2 Regression
@@ -50,6 +51,7 @@ for(i in 1:nrow(yr2)){
 
 new_year2 <- new_year2[2:nrow(new_year2),]
 new_year2$Framing <- relevel(as.factor(new_year2$Framing), ref="Neutral")
+new_year2$Context <- relevel(as.factor(new_year2$Context), ref="Snow")
 
 
 #Year 3 Regression
@@ -65,6 +67,7 @@ for(i in 1:nrow(yr3)){
 
 new_year3 <- new_year3[2:nrow(new_year3),]
 new_year3$Framing <- relevel(as.factor(new_year3$Framing), ref="Neutral")
+new_year3$Context <- relevel(as.factor(new_year3$Context), ref="Snow")
 
 
 #Year 4 Regression
@@ -80,6 +83,7 @@ for(i in 1:nrow(yr4)){
 
 new_year4 <- new_year4[2:nrow(new_year4),]
 new_year4$Framing <- relevel(as.factor(new_year4$Framing), ref="Neutral")
+new_year4$Context <- relevel(as.factor(new_year4$Context), ref="Snow")
 
 
 modelyr1 <- lm(Average ~ Context + Framing, data=new_year1)
