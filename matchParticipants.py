@@ -44,6 +44,10 @@ def initialize(newSheet):
 	newSheet['AL1'] = "FramedIdea16"
 	newSheet['AM1'] = "FramedAverage"
 	newSheet['AN1'] = "Shift(N-F)"
+	newSheet['AO1'] = "KAITotal"
+	newSheet['AP1'] = "KAISO"
+	newSheet['AQ1'] = "KAIE"
+	newSheet['AR1'] = "KAIRG"
 
 	return newSheet
 
@@ -79,6 +83,9 @@ def main():
 	wb = openpyxl.load_workbook('IF-Data-6-Ideas-v09-with-PR-Codes-v2.xlsx')
 	sheet = wb['Data']
 
+	wb2 = openpyxl.load_workbook('IF-Data-4-KAI-v08.xlsx')
+	sheet2 = wb2['KAI']
+
 	#Dictionaries for neutral, adaptive, and innovative ideas for each year
 	yr1 = [{}, {}, {}]
 	yr2 = [{}, {}, {}]
@@ -89,6 +96,16 @@ def main():
 
 	yr1IDs = [1, 2, 3]
 	yr1Values = ["Framing", "Neutral", "AllInterventions"]
+
+	KAI = {}
+	for kai in range(2, sheet2.max_row + 1):
+		ID = str(sheet2['A' + str(kai)].value).lstrip('0')
+		total = sheet2['D' + str(kai)].value
+		so = sheet2['E' + str(kai)].value
+		rg = sheet2['G' + str(kai)].value
+		e = sheet2['f' + str(kai)].value
+		KAI[ID] = [str(total), str(so), str(e), str(rg)]
+
 
 	for row in range(2, sheet.max_row + 1):
 		groupID = sheet['B' + str(row)].value
@@ -177,7 +194,17 @@ def main():
 				newSheet.cell(row=row, column=39).value = round(framedAvg, 3)
 				newSheet.cell(row=row, column=40).value = shift
 
-				row += 1
+				# print(participants)
+				try:
+					newSheet.cell(row=row, column=41).value = KAI[str(participants)][0]
+					newSheet.cell(row=row, column=42).value = KAI[str(participants)][1]
+					newSheet.cell(row=row, column=43).value = KAI[str(participants)][2]
+					newSheet.cell(row=row, column=44).value = KAI[str(participants)][3]
+					row += 1
+					
+				except:
+					row += 1
+					continue
 
 
 
