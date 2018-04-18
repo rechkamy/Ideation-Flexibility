@@ -48,6 +48,7 @@ def initialize(newSheet):
 	newSheet['AP1'] = "KAISO"
 	newSheet['AQ1'] = "KAIE"
 	newSheet['AR1'] = "KAIRG"
+	newSheet['AS1'] = "KAIValid?"
 
 	return newSheet
 
@@ -103,8 +104,9 @@ def main():
 		total = sheet2['D' + str(kai)].value
 		so = sheet2['E' + str(kai)].value
 		rg = sheet2['G' + str(kai)].value
-		e = sheet2['f' + str(kai)].value
-		KAI[ID] = [str(total), str(so), str(e), str(rg)]
+		e = sheet2['F' + str(kai)].value
+		valid = sheet2['M' + str(kai)].value
+		KAI[ID] = [str(total), str(so), str(e), str(rg), str(valid)]
 
 
 	for row in range(2, sheet.max_row + 1):
@@ -200,6 +202,7 @@ def main():
 					newSheet.cell(row=row, column=42).value = KAI[str(participants)][1]
 					newSheet.cell(row=row, column=43).value = KAI[str(participants)][2]
 					newSheet.cell(row=row, column=44).value = KAI[str(participants)][3]
+					newSheet.cell(row=row, column=45).value = KAI[str(participants)][4]
 					row += 1
 					
 				except:
