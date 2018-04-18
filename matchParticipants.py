@@ -191,7 +191,7 @@ def main():
 
 				neutralAvg = sum(dictionary[1][0][participants][1:])/neutralCount
 				framedAvg = sum(dictionary[1][frameNum][participants][1:])/framedCount
-				shift = neutralAvg - framedAvg
+				shift = framedAvg - neutralAvg
 				newSheet.cell(row=row, column=20).value = round(neutralAvg, 3)
 				newSheet.cell(row=row, column=39).value = round(framedAvg, 3)
 				newSheet.cell(row=row, column=40).value = shift
