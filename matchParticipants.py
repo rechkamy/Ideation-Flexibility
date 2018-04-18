@@ -43,7 +43,7 @@ def initialize(newSheet):
 	newSheet['AK1'] = "FramedIdea15"
 	newSheet['AL1'] = "FramedIdea16"
 	newSheet['AM1'] = "FramedAverage"
-	newSheet['AN1'] = "Shift(N-F)"
+	newSheet['AN1'] = "Shift(F-N)"
 	newSheet['AO1'] = "KAITotal"
 	newSheet['AP1'] = "KAISO"
 	newSheet['AQ1'] = "KAIE"
